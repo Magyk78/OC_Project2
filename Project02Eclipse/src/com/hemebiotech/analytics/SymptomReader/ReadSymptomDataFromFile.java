@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-/*
+/**
  * Contains method to read symptoms list from a text file
  * 
  * @Since 23/03/2022
@@ -23,21 +23,19 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	/**
 	 * Class Constructor
 	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it,
-	 *                 one per line
+	 * @param filepath a full or partial path to file with symptom strings in it            
 	 */
 	public ReadSymptomDataFromFile(String filepath) {
 		this.filepath = filepath;
 	}
 
-	/*
+	/**
 	 * Returns a list of symptoms from a text file, duplicates are possible/probable
 	 * 
 	 * @return result - list of symptoms
 	 * 
 	 * @exception FileNotFoundException if file does not exist.
-	 * 
-	 * @exception IOException if stream to file cannot be written to or closed.
+	 * @exception IOException if stream to file cannot be read to or closed.
 	 */
 	@Override
 	public List<String> getSymptoms() {

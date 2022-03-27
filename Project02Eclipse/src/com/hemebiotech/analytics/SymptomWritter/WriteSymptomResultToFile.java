@@ -1,17 +1,12 @@
 package com.hemebiotech.analytics.SymptomWritter;
 
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.TreeMap;
 
-/*
+/**
  * Contains method to write the symptoms in a file
- * 
- * @Since 23/03/2022
- * @Version 1.0
- * @Author Antoine
  * 
  */
 public class WriteSymptomResultToFile implements ISymptomWritter {
@@ -20,24 +15,21 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 
 	private TreeMap<String, Long> symptomResult;
 
-	/**
+	 /**
 	 * Class Constructor
 	 * 
-	 * @param filepath      - a full or partial path to file with symptom strings in
-	 *                      it
-	 * @param symptomResult - a map sorted alphabetically of symptom name & number
+	 * @param filepath   a full or partial path to file with symptom strings in it
+	 * @param symptomResult   a map sorted alphabetically of symptom name and number of symptom
 	 */
-
 	public WriteSymptomResultToFile(String filepath, TreeMap<String, Long> symptomResult) {
 
 		this.filepath = filepath;
 		this.symptomResult = symptomResult;
 	}
 
-	/*
+	/**
 	 * Write a text file from a Tree Map of symptoms
 	 * 
-	 * @exception IOException if stream to file cannot be written to or closed.
 	 */
 	@Override
 	public void writeResultOut() {

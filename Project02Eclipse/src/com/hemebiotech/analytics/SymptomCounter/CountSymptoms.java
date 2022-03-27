@@ -6,7 +6,7 @@ import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/*
+/**
  * count symptom all occurences of symptoms from a data sources
  * 
  * @Since 23/03/2022
@@ -28,7 +28,7 @@ public class CountSymptoms implements ISymptomCounter {
 		this.symptomList = symptomList;
 	}
 
-	/*
+	/**
 	 * Returns a sorted map of symptoms (value) & number of occurences
 	 * 
 	 * @return result - list of symptoms

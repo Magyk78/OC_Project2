@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.hemebiotech.analytics.SymptomWritter","c":"WriteSymptomResultToFile","l":"writeResultOut()"},{"p":"com.hemebiotech.analytics.SymptomWritter","c":"WriteSymptomResultToFile","l":"WriteSymptomResultToFile(String, TreeMap<String, Long>)","u":"%3Cinit%3E(java.lang.String,java.util.TreeMap)"}];updateSearchResults();
