@@ -1,45 +1,35 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 
+import com.hemebiotech.analytics.SymptomCounter.CountSymptoms;
+import com.hemebiotech.analytics.SymptomCounter.ISymptomCounter;
+import com.hemebiotech.analytics.SymptomReader.ISymptomReader;
+import com.hemebiotech.analytics.SymptomReader.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.SymptomWritter.ISymptomWritter;
+import com.hemebiotech.analytics.SymptomWritter.WriteSymptomResultToFile;
+
+/*
+ * Analyze a brute text file of symptom containing duplicate and return file including symptom & number of symptom occurences
+ * 
+ * @Since 23/03/2022
+ * @Version 1.0
+ * @Author Antoine
+ */
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
+
 	
 	public static void main(String args[]) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
 
-		int i = 0;	// set i to 0
-
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			}
-			else if (line.equals("rash")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
-
-			line = reader.readLine();	// get another symptom
-		}
+		final String INPUT_FILE = "symptoms.txt";
+		final String OUTPUT_FILE = "result.out";
 		
-		reader.close();
+		ISymptomReader reader = new ReadSymptomDataFromFile(INPUT_FILE);
 		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+		ISymptomCounter counter = new CountSymptoms(reader.GetSymptoms());
+			
+		ISymptomWritter writer = new WriteSymptomResultToFile(OUTPUT_FILE,counter.getResult());
+		
+		writer.writeResultOut();	
+
 	}
 }
