@@ -1,13 +1,18 @@
 package com.hemebiotech.analytics.SymptomReader;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
- * Simple brute force implementation
+ * Contains method to read symptoms list from a text file
+ * 
+ * @Since 23/03/2022
+ * @Version 1.0
+ * @Author Antoine
  *
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
@@ -15,6 +20,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	private String filepath;
 	
 	/**
+	 * Class Constructor
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 */
@@ -22,26 +28,35 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 	
+	
+	/*
+	 * Returns a list of symptoms from a text file, duplicates are possible/probable
+	 * 
+	 * @return result - list of symptoms
+	 */
 	@Override
 	public List<String> GetSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
+
+		List<String> result = null;
+		Path path = (Paths.get(filepath));
 		
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
-				String line = reader.readLine();
-				
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
-				}
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {		
+			if ((Files.exists(path)) && (Files.isReadable(path))) {
+				// Read file into stream
+				Stream<String> lines = Files.lines(path);
+				//Get in result list all lines not empty
+				result = lines.filter(s->s.matches("^(?!\s*$).+")). toList();
+				lines.close();
+			}else {
+				System.out.println("File is not exist or not readable");
 			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
+
 
 }

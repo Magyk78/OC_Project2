@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface ISymptomReader {
 	/**
-	 * If no data is available, return an empty List
+	 * Returns a list of symptoms from a text file, duplicates are possible/probable
 	 * 
 	 * @return a raw listing of all Symptoms obtained from a data source, duplicates are possible/probable
 	 */
