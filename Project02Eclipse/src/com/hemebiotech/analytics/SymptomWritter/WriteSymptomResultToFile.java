@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics.SymptomWritter;
 
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.TreeMap;
@@ -36,6 +37,7 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 	/*
 	 * Write a text file from a Tree Map of symptoms
 	 * 
+	 * @exception IOException if stream to file cannot be written to or closed.
 	 */
 	@Override
 	public void writeResultOut() {
@@ -45,10 +47,10 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 			try {
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(filepath));
-							
+
 				symptomResult.forEach((k, v) -> {
 					try {
-						//Write in the text file
+						// Write in the text file
 						writer.write(k + "=" + v.toString() + System.lineSeparator());
 						System.out.println(k + "=" + v);
 

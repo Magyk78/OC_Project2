@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics;
 
-
 import com.hemebiotech.analytics.SymptomCounter.CountSymptoms;
 import com.hemebiotech.analytics.SymptomCounter.ISymptomCounter;
 import com.hemebiotech.analytics.SymptomReader.ISymptomReader;
@@ -17,19 +16,18 @@ import com.hemebiotech.analytics.SymptomWritter.WriteSymptomResultToFile;
  */
 public class AnalyticsCounter {
 
-	
 	public static void main(String args[]) throws Exception {
 
 		final String INPUT_FILE = "symptoms.txt";
 		final String OUTPUT_FILE = "result.out";
-		
+
 		ISymptomReader reader = new ReadSymptomDataFromFile(INPUT_FILE);
-		
-		ISymptomCounter counter = new CountSymptoms(reader.GetSymptoms());
-			
-		ISymptomWritter writer = new WriteSymptomResultToFile(OUTPUT_FILE,counter.getResult());
-		
-		writer.writeResultOut();	
+
+		ISymptomCounter counter = new CountSymptoms(reader.getSymptoms());
+
+		ISymptomWritter writer = new WriteSymptomResultToFile(OUTPUT_FILE, counter.getResult());
+
+		writer.writeResultOut();
 
 	}
 }
