@@ -8,7 +8,7 @@ import java.util.TreeMap;
 public interface ISymptomCounter {
 
 	/**
-	 * Return a sorted Map of symptoms (value) & number of occurences
+	 * Return a sorted Map of symptoms (value) and number of occurences
 	 * 
 	 * @return a sorted map of symptoms
 	 */
