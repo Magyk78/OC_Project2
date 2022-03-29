@@ -52,7 +52,7 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 			symptomResult.forEach((k, v) -> {
 				try {
 					// Write in the text file
-					writer.write(k + "," + v.toString() + System.lineSeparator());
+					writer.write(k + "=" + v.toString() + System.lineSeparator());
 
 				} catch (IOException e) {
 
