@@ -8,56 +8,65 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-/*
+/**
  * Contains method to read symptoms list from a text file
  * 
- * @Since 23/03/2022
- * @Version 1.0
- * @Author Antoine
- *
+ * @author Antoine
+ * @version 1.0
+ * @since 23/03/2022
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
+	private Path path;
 
 	/**
 	 * Class Constructor
 	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it,
-	 *                 one per line
+	 * @param filepath 	a full or partial path to file with symptom strings in it
+	 * @throws NullPointerException 	if object is null
+	 * @throws FileNotFoundException    if file not found
+	 * @throws IOException              if stream to file cannot be read
 	 */
-	public ReadSymptomDataFromFile(String filepath) {
+	public ReadSymptomDataFromFile(String filepath) throws IOException {
+
 		this.filepath = filepath;
+
+		if (this.filepath == null) {
+			throw new NullPointerException();
+		} else {
+
+			path = (Paths.get(this.filepath));
+
+			if (path == null) {
+				throw new NullPointerException();
+			} else if (!Files.exists(path)) {
+				throw new FileNotFoundException();
+			} else if (!Files.isReadable(path)) {
+				throw new IOException();
+			}
+		}
+
 	}
 
-	/*
+	/**
 	 * Returns a list of symptoms from a text file, duplicates are possible/probable
 	 * 
 	 * @return result - list of symptoms
 	 * 
-	 * @exception FileNotFoundException if file does not exist.
-	 * 
-	 * @exception IOException if stream to file cannot be written to or closed.
 	 */
 	@Override
 	public List<String> getSymptoms() {
 
 		List<String> result = null;
-		Path path = (Paths.get(filepath));
 
 		try {
-			if ((Files.exists(path)) && (Files.isReadable(path))) {
-				// Read file into stream
-				Stream<String> lines = Files.lines(path);
-				// Get in result list all lines not empty
-				result = lines.filter(s -> s.matches("^(?!\s*$).+")).toList();
-				lines.close();
-			} else {
-				System.out.println("File is not exist or not readable");
-			}
-		} catch (FileNotFoundException e) {
 
-			e.printStackTrace();
+			Stream<String> lines = Files.lines(path);
+			// Get in result list all lines not empty
+			result = lines.filter(s -> !s.trim().isEmpty()).toList();
+			lines.close();
+
 		} catch (IOException e) {
 
 			e.printStackTrace();

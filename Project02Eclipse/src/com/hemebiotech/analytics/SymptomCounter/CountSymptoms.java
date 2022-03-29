@@ -6,13 +6,12 @@ import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/*
- * count symptom all occurences of symptoms from a data sources
+/**
+ * Count all occurences of symptoms from a data sources
  * 
- * @Since 23/03/2022
- * @Version 1.0
- * @Author Antoine
- *
+ * @author Antoine
+ * @version 1.0
+ * @since 23/03/2022
  */
 public class CountSymptoms implements ISymptomCounter {
 
@@ -22,32 +21,30 @@ public class CountSymptoms implements ISymptomCounter {
 	 * Class Constructor
 	 * 
 	 * @param symptomList - a list do symptoms
+	 * @throws NullPointerException	if symptomList is null
 	 */
 	public CountSymptoms(List<String> symptomList) {
 
 		this.symptomList = symptomList;
+		
+		if (symptomList == null)
+			throw new NullPointerException();
+		
 	}
 
-	/*
-	 * Returns a sorted map of symptoms (value) & number of occurences
+	/**
+	 * Returns a sorted map of symptoms (value) and number of occurences
 	 * 
 	 * @return result - list of symptoms
 	 */
 	@Override
 	public TreeMap<String, Long> getResult() {
 
-		TreeMap<String, Long> sortedSympstoms = null;
-
-		if (symptomList != null) {
-
-			// Put in a Map Symptom (Key) & number of occurences (Value)
-			Map<String, Long> symptomsCounter = symptomList.stream()
-					.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-			// Use TreeMap to sort by key
-			sortedSympstoms = new TreeMap<String, Long>(symptomsCounter);
-
-			sortedSympstoms.forEach((k, v) -> System.out.println(("testTreeMap -> " + k + "=" + v)));
-		}
+		// Put in a Map Symptom (Key) & number of occurences (Value)
+		Map<String, Long> symptomsCounter = symptomList.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		// Use TreeMap to sort by key 
+		TreeMap<String, Long>sortedSympstoms = new TreeMap<String, Long>(symptomsCounter);
 
 		return sortedSympstoms;
 	}

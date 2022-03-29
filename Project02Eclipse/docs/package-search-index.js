@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.hemebiotech.analytics"},{"l":"com.hemebiotech.analytics.SymptomCounter"},{"l":"com.hemebiotech.analytics.SymptomReader"},{"l":"com.hemebiotech.analytics.SymptomWritter"}];updateSearchResults();
