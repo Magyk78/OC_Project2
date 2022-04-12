@@ -1,11 +1,11 @@
 package com.hemebiotech.analytics;
 
-import com.hemebiotech.analytics.SymptomCounter.CountSymptoms;
-import com.hemebiotech.analytics.SymptomCounter.ISymptomCounter;
-import com.hemebiotech.analytics.SymptomReader.ISymptomReader;
-import com.hemebiotech.analytics.SymptomReader.ReadSymptomDataFromFile;
-import com.hemebiotech.analytics.SymptomWritter.ISymptomWritter;
-import com.hemebiotech.analytics.SymptomWritter.WriteSymptomResultToFile;
+import com.hemebiotech.analytics.symptom_counter.CountSymptoms;
+import com.hemebiotech.analytics.symptom_counter.ISymptomCounter;
+import com.hemebiotech.analytics.symptom_reader.ISymptomReader;
+import com.hemebiotech.analytics.symptom_reader.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.symptom_writter.ISymptomWritter;
+import com.hemebiotech.analytics.symptom_writter.WriteSymptomResultToFile;
 
 /**
  * Analyze a brute text file of symptom containing duplicate and return file

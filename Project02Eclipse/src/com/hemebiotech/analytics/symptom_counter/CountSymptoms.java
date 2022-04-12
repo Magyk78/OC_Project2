@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.SymptomCounter;
+package com.hemebiotech.analytics.symptom_counter;
 
 import java.util.List;
 import java.util.Map;
@@ -21,15 +21,14 @@ public class CountSymptoms implements ISymptomCounter {
 	 * Class Constructor
 	 * 
 	 * @param symptomList - a list do symptoms
-	 * @throws NullPointerException	if symptomList is null
+	 * @throws NullPointerException if symptomList is null
 	 */
 	public CountSymptoms(List<String> symptomList) {
 
-		this.symptomList = symptomList;
-		
 		if (symptomList == null)
 			throw new NullPointerException();
-		
+		this.symptomList = symptomList;
+
 	}
 
 	/**
@@ -43,8 +42,8 @@ public class CountSymptoms implements ISymptomCounter {
 		// Put in a Map Symptom (Key) & number of occurences (Value)
 		Map<String, Long> symptomsCounter = symptomList.stream()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		// Use TreeMap to sort by key 
-		TreeMap<String, Long>sortedSympstoms = new TreeMap<String, Long>(symptomsCounter);
+		// Use TreeMap to sort by key
+		TreeMap<String, Long> sortedSympstoms = new TreeMap<String, Long>(symptomsCounter);
 
 		return sortedSympstoms;
 	}

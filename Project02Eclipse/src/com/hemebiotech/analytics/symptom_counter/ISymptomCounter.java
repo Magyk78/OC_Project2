@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.SymptomCounter;
+package com.hemebiotech.analytics.symptom_counter;
 
 import java.util.TreeMap;
 

@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.SymptomWritter;
+package com.hemebiotech.analytics.symptom_writter;
 
 import java.io.IOException;
 import java.util.TreeMap;

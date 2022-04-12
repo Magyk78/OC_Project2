@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.SymptomReader;
+package com.hemebiotech.analytics.symptom_reader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,29 +23,18 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	/**
 	 * Class Constructor
 	 * 
-	 * @param filepath 	a full or partial path to file with symptom strings in it
-	 * @throws NullPointerException 	if object is null
-	 * @throws FileNotFoundException    if file not found
-	 * @throws IOException              if stream to file cannot be read
+	 * @param filepath a full or partial path to file with symptom strings in it
+	 * @throws NullPointerException  if object is null
+	 * @throws FileNotFoundException if file not found
+	 * @throws IOException           if stream to file cannot be read
 	 */
 	public ReadSymptomDataFromFile(String filepath) throws IOException {
 
+		if ((filepath == null) || (filepath.isEmpty()) || (filepath.isBlank()))
+			throw new IllegalArgumentException();
+
 		this.filepath = filepath;
-
-		if (this.filepath == null) {
-			throw new NullPointerException();
-		} else {
-
-			path = (Paths.get(this.filepath));
-
-			if (path == null) {
-				throw new NullPointerException();
-			} else if (!Files.exists(path)) {
-				throw new FileNotFoundException();
-			} else if (!Files.isReadable(path)) {
-				throw new IOException();
-			}
-		}
+		path = (Paths.get(this.filepath));
 
 	}
 

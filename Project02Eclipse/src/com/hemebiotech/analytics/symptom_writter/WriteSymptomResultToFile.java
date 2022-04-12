@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.SymptomWritter;
+package com.hemebiotech.analytics.symptom_writter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -24,10 +24,10 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 	 */
 	public WriteSymptomResultToFile(String filepath) {
 
-		this.filepath = filepath;
+		if ((filepath == null) || (filepath.isEmpty()) || (filepath.isBlank()))
+			throw new IllegalArgumentException();
 
-		if (this.filepath == null)
-			throw new NullPointerException();
+		this.filepath = filepath;
 
 	}
 

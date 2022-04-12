@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics.SymptomReader;
+package com.hemebiotech.analytics.symptom_reader;
 
 import java.util.List;
 
