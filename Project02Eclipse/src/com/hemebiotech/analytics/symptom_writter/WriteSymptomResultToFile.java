@@ -20,12 +20,12 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 	 * Class Constructor
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it
-	 * @throws NullPointerException if object is null
+	 * @throws IllegalArgumentException if filepath is null, empty or blank
 	 */
 	public WriteSymptomResultToFile(String filepath) {
 
 		if ((filepath == null) || (filepath.isEmpty()) || (filepath.isBlank()))
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("filepath cannot be null, empty or blank");
 
 		this.filepath = filepath;
 

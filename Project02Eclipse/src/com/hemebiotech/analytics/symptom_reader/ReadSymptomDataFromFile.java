@@ -24,14 +24,13 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * Class Constructor
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it
-	 * @throws NullPointerException  if object is null
-	 * @throws FileNotFoundException if file not found
+	 * @throws IllegalArgumentException  if filepath is null, empty or blank
 	 * @throws IOException           if stream to file cannot be read
 	 */
 	public ReadSymptomDataFromFile(String filepath) throws IOException {
 
 		if ((filepath == null) || (filepath.isEmpty()) || (filepath.isBlank()))
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("filepath cannot be null, empty or blank");
 
 		this.filepath = filepath;
 		path = (Paths.get(this.filepath));
