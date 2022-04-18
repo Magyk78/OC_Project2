@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics.symptom_reader;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,8 +23,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * Class Constructor
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it
-	 * @throws IllegalArgumentException  if filepath is null, empty or blank
-	 * @throws IOException           if stream to file cannot be read
+	 * @throws IllegalArgumentException if filepath is null, empty or blank
+	 * @throws IOException              if stream to file cannot be read
 	 */
 	public ReadSymptomDataFromFile(String filepath) throws IOException {
 
@@ -57,7 +56,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			System.out.println("The file symptoms.txt cannot be read");
 		}
 
 		return result;

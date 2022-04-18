@@ -26,7 +26,7 @@ public class CountSymptoms implements ISymptomCounter {
 	public CountSymptoms(List<String> symptomList) {
 
 		if (symptomList == null)
-			throw new NullPointerException();
+			throw new NullPointerException("The list of symptom is null");
 		this.symptomList = symptomList;
 
 	}

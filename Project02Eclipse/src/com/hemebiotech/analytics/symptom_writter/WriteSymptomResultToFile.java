@@ -56,7 +56,7 @@ public class WriteSymptomResultToFile implements ISymptomWritter {
 
 				} catch (IOException e) {
 
-					e.printStackTrace();
+					System.out.println("a problem occurred while writing the result file");
 				}
 			});
 
